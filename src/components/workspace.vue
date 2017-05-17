@@ -39,8 +39,8 @@
             <label>旋转</label>
             <input type="range" min="0" max="360" :value="rotate" data-style="rotate" @input="styleChange($event.target)" class="form-control" />
           </div>
-          <div class="form-gourp">
-            <upload></upload>
+          <div class="form-gourp" v-if="activeType === 'img'">
+            <upload :imageUrl="src" @urlChange="handleUrlChange"></upload>
           </div>
           <div class="btn btn-default" @click="isRun = !isRun"> {{isRun ? '停止动画':'启动动画'}}</div>
 
@@ -54,7 +54,7 @@
 import canvas from './Canvas'
 import eventbus from '../common/eventbus'
 import upload from './upload'
-
+import data from '../mock/data'
 
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
 function generateComputedStyleProps() {
@@ -90,80 +90,7 @@ export default {
     return {
       activeIndex: 0,
       isRun: false,
-      elements: [
-        {
-          type: 'img',
-          id: 12,
-          props: {
-            style: {
-              top: 20,
-              left: 50,
-              width: 800,
-              height: 600,
-              position: 'absolute',
-              transform: 'rotate(50deg)',
-              clipPath: 'polygon(0 0,100% 100%,0 100%)'
-            },
-            domProps: {
-              src: 'http://www.mayifengbao.com:3000/img/hot-screen.jpg',
-            },
-            'class': ['zoomOutUp', 'infinite', 'animated']
-          }
-        },
-        {
-          type: 'img',
-          id: 12,
-          props: {
-            style: {
-              top: 200,
-              left: 500,
-              width: 756,
-              height: 455,
-
-
-              clipPath: 'polygon(10% 0,45% 10%,100% 100%,0 100%)'
-            },
-            domProps: {
-              src: 'http://ant-storm.oss-cn-shenzhen.aliyuncs.com/bucket-antstorm/antstorm/10058/10058/10058-1493779983767-image.jpg',
-            },
-            'class': ['wobble', 'infinite', 'animated']
-          }
-        },
-        {
-          type: 'text',
-          id: 13,
-          props: {
-            style: {
-
-              rotate: 40,
-              color: '#3da21a',
-              fontSize: 92,
-              top: 500,
-              left: 400,
-              animationDuration: '3s'
-            },
-            domProps: {
-              innerHTML: 'adsfasdf'
-
-            },
-            'class': ['flipInX', 'infinite', 'animated']
-          }
-        },
-        {
-          type: 'img',
-          role: 'background',
-          id: 13,
-          props: {
-            style: {
-            },
-            domProps: {
-              src: '/static/1.jpg'
-            },
-            'class': ['tpl-bg']
-          }
-
-        }
-      ]
+      elements: data
     }
   },
   methods: {
@@ -180,6 +107,9 @@ export default {
     },
     setActiveIndex(i) {
       this.activeIndex = i
+    },
+    handleUrlChange(url) {
+      this.$set(this.elements[this.activeIndex].props.domProps, 'src', url)
     }
   },
   mounted() {

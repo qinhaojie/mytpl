@@ -1,7 +1,8 @@
 <template>
   <el-upload
   class="avatar-uploader"
-  action="https://jsonplaceholder.typicode.com/posts/"
+  action="/upload"
+  :data="uploadData"
   :show-file-list="false"
   :on-success="handleAvatarSuccess"
   :before-upload="beforeAvatarUpload">
@@ -14,24 +15,34 @@
   export default {
     data() {
       return {
-        imageUrl: ''
+
+        uploadData: {
+          userId: 10058
+        }
       };
+    },
+    props: {
+      imageUrl: {
+        type: String,
+        default: ''
+      }
+
     },
     methods: {
       handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
+        console.log(res)
+        this.$emit('urlChange', `/api/v1/common/file/redirectUrl?fileId=${res.data.id}`)
+        //this.imageUrl = URL.createObjectURL(file.raw);
       },
       beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
+
         const isLt2M = file.size / 1024 / 1024 < 2;
 
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
+
         if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
+          this.$message.error('上传图片大小不能超过 2MB!');
         }
-        return isJPG && isLt2M;
+        return   isLt2M;
       }
     }
   }
@@ -60,6 +71,9 @@
     width: 178px;
     height: 178px;
     display: block;
+  }
+  .el-upload__input{
+    display: none !important;
   }
 </style>
 
