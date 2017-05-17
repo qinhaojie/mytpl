@@ -14,7 +14,7 @@ export default
           // clipPath: 'polygon(0 0,100% 100%,0 100%)'
         },
         domProps: {
-          src: 'http://www.mayifengbao.com:3000/img/hot-screen.jpg',
+          src: '/static/3.png',
         },
         'class': ['zoomOutUp', 'infinite', 'animated']
       }
@@ -52,7 +52,7 @@ export default
           animationDuration: '3s'
         },
         domProps: {
-          innerHTML: 'adsfasdf'
+          innerHTML: '端午节，大家一起吃粽子'
 
         },
         'class': ['flipInX', 'infinite', 'animated']
@@ -66,7 +66,7 @@ export default
         style: {
         },
         domProps: {
-          src: 'http://img06.tooopen.com/images/20170321/tooopen_sy_202659171135.jpg'
+          src: '/static/2.jpg'
         },
         'class': ['tpl-bg']
       }
