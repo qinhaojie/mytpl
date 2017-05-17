@@ -50,6 +50,7 @@
 
 <script>
 import canvas from './Canvas'
+import eventbus from '../common/eventbus'
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
 function generateComputedStyleProps() {
   let ret = {}
@@ -176,7 +177,13 @@ export default {
     }
   },
   mounted() {
-
+    eventbus.$on('elementChange', (index, newEl) => {
+      // this.elements[index] = newEl
+      this.$set(this.elements, index, newEl)
+      // this.elements[index].props.style.top = newEl.props.style.top
+      // this.elements[index].props.style.left = newEl.props.style.left
+      // console.log(newEl,this.elements[index])
+    })
   }
 }
 </script>
