@@ -47,7 +47,14 @@ Object.keys(proxyTable).forEach(function (context) {
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
-
+app.use('/upload',proxyMiddleware({
+  target: 'http://www.mayifengbao.com:3000',
+  changeOrigin: true,
+}))
+app.use('/api',proxyMiddleware({
+  target: 'http://www.mayifengbao.com:3000',
+  changeOrigin: true,
+}))
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 

@@ -39,7 +39,9 @@
             <label>旋转</label>
             <input type="range" min="0" max="360" :value="rotate" data-style="rotate" @input="styleChange($event.target)" class="form-control" />
           </div>
-
+          <div class="form-gourp">
+            <upload></upload>
+          </div>
           <div class="btn btn-default" @click="isRun = !isRun"> {{isRun ? '停止动画':'启动动画'}}</div>
 
         </form>
@@ -51,6 +53,9 @@
 <script>
 import canvas from './Canvas'
 import eventbus from '../common/eventbus'
+import upload from './upload'
+
+
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
 function generateComputedStyleProps() {
   let ret = {}
@@ -66,7 +71,8 @@ function generateComputedStyleProps() {
 export default {
   name: 'workspace',
   components: {
-    "my-canvas": canvas
+    "my-canvas": canvas,
+    upload
   },
   computed: Object.assign({
     innerHTML() {

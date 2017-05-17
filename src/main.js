@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import drag from './directive/drag'
+import ElementUI from 'element-ui'
+
 Vue.config.productionTip = false
 Vue.use(drag)
-
+Vue.use(ElementUI)
 // document.body.addEventListener('dragstart', () => {return false})
 
 /* eslint-disable no-new */
