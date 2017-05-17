@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import dnd from 'vue-drag-and-drop'
+import drag from './directive/drag'
 Vue.config.productionTip = false
-Vue.use(dnd)
+Vue.use(drag)
+
+// document.body.addEventListener('dragstart', () => {return false})
 
 /* eslint-disable no-new */
 new Vue({

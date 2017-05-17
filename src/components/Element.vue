@@ -24,6 +24,10 @@ export default {
           ret.props.style[key] = value + 'px'
         }
       }
+      // 禁止图片的默认拖拽行为
+      ret.props.attrs = {
+        'draggable': false
+      }
       return ret
     }
   },
