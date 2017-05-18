@@ -52,7 +52,7 @@ export default
           animationDuration: '3s'
         },
         domProps: {
-          innerHTML: '端午节，大家一起吃粽子'
+          innerHTML: '端午节就来蚂蚁风暴'
 
         },
         'class': ['flipInX', 'infinite', 'animated']
