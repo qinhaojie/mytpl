@@ -9,14 +9,15 @@ export default
           left: 50,
           width: 800,
           height: 600,
-          position: 'absolute',
-          transform: 'rotate(50deg)',
+          rotate: 60,
+          animationDuration: 1,
+          animationName:'zoomOutUp'
           // clipPath: 'polygon(0 0,100% 100%,0 100%)'
         },
         domProps: {
           src: '/static/3.png',
         },
-        'class': ['zoomOutUp', 'infinite', 'animated']
+        'class': ['infinite', 'animated']
       }
     },
     {
@@ -28,14 +29,16 @@ export default
           left: 500,
           width: 400,
           height: 400,
-
+          rotate: 0,
+          animationName: 'wobble',
+          animationDuration: 1
 
           // clipPath: 'polygon(10% 0,45% 10%,100% 100%,0 100%)'
         },
         domProps: {
           src: '/static/2.png',
         },
-        'class': ['wobble', 'infinite', 'animated']
+        'class': ['infinite', 'animated']
       }
     },
     {
@@ -49,13 +52,14 @@ export default
           fontSize: 92,
           top: 500,
           left: 400,
-          animationDuration: '3s'
+          animationDuration: 1,
+          animationName: 'flipInX'
         },
         domProps: {
           innerHTML: '端午节就来蚂蚁风暴'
 
         },
-        'class': ['flipInX', 'infinite', 'animated']
+        'class': ['infinite', 'animated']
       }
     },
     {
@@ -69,6 +73,26 @@ export default
           src: '/static/2.jpg'
         },
         'class': ['tpl-bg']
+      }
+
+    },
+    {
+      type: 'img',
+
+      id: 13,
+      props: {
+        style: {
+          width: 160,
+          height: 160,
+          top: 800,
+          left: 1600,
+          rotate: 0,
+          animationName:''
+        },
+        domProps: {
+          src: '/static/1.jpg'
+        },
+        'class': []
       }
 
     }

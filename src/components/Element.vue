@@ -20,6 +20,10 @@ export default {
           ret.props.style['transform'] = `rotate(${value}deg)`
           continue
         }
+        if(key === 'animationDuration'){
+          ret.props.style['animationDuration'] = `${value}s`
+          continue
+        }
         if(typeof value === 'number') {
           ret.props.style[key] = value + 'px'
         }

@@ -43,7 +43,7 @@ export default {
     let copyContainer = this.$refs.copyContainer
     let p = canvas.parentElement
     // bootstrap默认的15px padding
-    let width = p.clientWidth - 30
+    let width = p.clientWidth
     canvas.style.transform = `scale(${width / 1920})`
 
 

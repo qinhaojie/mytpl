@@ -5,49 +5,48 @@
         <my-canvas :data="elements" :class="{stop: !isRun}" @activeElementChange="setActiveIndex">sdfg</my-canvas>
       </div>
       <div class="col-md-4">
-        <form>
-          <div class="form-group" v-if="activeType === 'text'">
-            <label>文本</label>
+        <el-form label-width="80px">
+          <el-form-item label="文本"  v-if="activeType === 'text'">
             <el-input  v-model="elements[activeIndex].props.domProps.innerHTML"></el-input>
-          </div>
-          <div class="form-group" v-if="activeType === 'text'">
-            <label>字体大小</label>
+          </el-form-item>
+          <el-form-item label="字体大小" v-if="activeType === 'text'">
             <el-input-number  v-model="elements[activeIndex].props.style.fontSize" :min="12" :max="240"></el-input-number>
-          </div>
-          <div class="form-group" v-if="activeType === 'text'">
-            <label>颜色</label>
+          </el-form-item>
+          <el-form-item label="颜色" v-if="activeType === 'text'">
             <el-color-picker v-model="elements[activeIndex].props.style.color"></el-color-picker>
-          </div>
-          <div class="form-group" v-if="activeType === 'img'">
-            <label>宽度</label>
+          </el-form-item>
+          <el-form-item label="宽度" v-if="activeType === 'img'">
             <el-slider v-model="elements[activeIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
-          </div>
-          <div class="form-group" v-if="activeType === 'img'">
-            <label>高度</label>
+          </el-form-item>
+          <el-form-item label="高度" v-if="activeType === 'img'">
             <el-slider v-model="elements[activeIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
-          </div>
-          <div class="form-group">
-            <label>left</label>
+          </el-form-item>
+          <el-form-item label="left">
             <el-slider v-model="elements[activeIndex].props.style.left" show-input :min="0" :max="1920"></el-slider>
-          </div>
-          <div class="form-group">
-            <label>top</label>
+          </el-form-item>
+          <el-form-item label="top">
             <el-slider v-model="elements[activeIndex].props.style.top" show-input :min="0" :max="1080"></el-slider>
-          </div>
-
-          <div class="form-group">
-            <label>旋转</label>
-            <el-slider v-model="elements[activeIndex].props.style.rotate" show-input :min="0" :max="360" @change="onChange"></el-slider>
-          </div>
-          <div class="form-group" v-if="activeType === 'img'">
+          </el-form-item>
+          <el-form-item label="旋转">
+            <el-slider v-model="elements[activeIndex].props.style.rotate" show-input :min="0" :max="360"></el-slider>
+          </el-form-item>
+          <el-form-item label="动画种类">
+            <el-select v-model="elements[activeIndex].props.style.animationName">
+              <el-option v-for="name in animateNames" :key="name" :value="name" :label="name"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="动画持续时间">
+            <el-slider v-model="elements[activeIndex].props.style.animationDuration" :step="0.1" show-input :min="0" :max="15"></el-slider>
+          </el-form-item>
+          <el-form-item  v-if="activeType === 'img'">
             <upload :imageUrl="src" @urlChange="handleUrlChange"></upload>
-          </div>
-          <div class="form-group">
+          </el-form-item>
+          <el-form-item label="开启动画">
             <el-switch v-model="isRun" on-text="on" off-text="off">
             </el-switch>
-          </div>
+          </el-form-item>
 
-        </form>
+        </el-form>
       </div>
     </div>
   </div>
@@ -58,7 +57,7 @@ import canvas from './Canvas'
 import eventbus from '../common/eventbus'
 import upload from './upload'
 import data from '../mock/data'
-
+import animateNames from '../config/animate.config'
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
 function generateComputedStyleProps() {
   let ret = {}
@@ -91,6 +90,7 @@ export default {
   data() {
 
     return {
+      animateNames,
       activeIndex: 0,
       isRun: false,
       elements: data
@@ -131,7 +131,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .ov-h {
   overflow: hidden;
 }
