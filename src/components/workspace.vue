@@ -22,10 +22,10 @@
             <el-slider v-model="elements[activeIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
           </el-form-item>
           <el-form-item label="left">
-            <el-slider v-model="elements[activeIndex].props.style.left" show-input :min="0" :max="1920"></el-slider>
+            <el-slider v-model="elements[activeIndex].props.style.left" show-input :min="-300" :max="1920"></el-slider>
           </el-form-item>
           <el-form-item label="top">
-            <el-slider v-model="elements[activeIndex].props.style.top" show-input :min="0" :max="1080"></el-slider>
+            <el-slider v-model="elements[activeIndex].props.style.top" show-input :min="-300" :max="1080"></el-slider>
           </el-form-item>
           <el-form-item label="旋转">
             <el-slider v-model="elements[activeIndex].props.style.rotate" show-input :min="0" :max="360"></el-slider>

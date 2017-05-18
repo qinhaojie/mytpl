@@ -3,6 +3,7 @@ export default
     {
       type: 'img',
       id: 12,
+      role: 'component',
       props: {
         style: {
           top: 20,
@@ -12,7 +13,6 @@ export default
           rotate: 60,
           animationDuration: 1,
           animationName:'zoomOutUp'
-          // clipPath: 'polygon(0 0,100% 100%,0 100%)'
         },
         domProps: {
           src: '/static/3.png',
@@ -23,6 +23,7 @@ export default
     {
       type: 'img',
       id: 12,
+      role: 'component',
       props: {
         style: {
           top: 200,
@@ -32,8 +33,6 @@ export default
           rotate: 0,
           animationName: 'wobble',
           animationDuration: 1
-
-          // clipPath: 'polygon(10% 0,45% 10%,100% 100%,0 100%)'
         },
         domProps: {
           src: '/static/2.png',
@@ -44,6 +43,7 @@ export default
     {
       type: 'text',
       id: 13,
+      role: 'component',
       props: {
         style: {
 
@@ -78,8 +78,8 @@ export default
     },
     {
       type: 'img',
-
       id: 13,
+      role: 'code',
       props: {
         style: {
           width: 160,
@@ -94,6 +94,5 @@ export default
         },
         'class': []
       }
-
     }
   ]
