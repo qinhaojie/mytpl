@@ -8,41 +8,44 @@
         <form>
           <div class="form-group" v-if="activeType === 'text'">
             <label>文本</label>
-            <input type="text" :value="innerHTML" data-style="innerHTML" @input="domPropsChange($event.target)" class="form-control">
+            <el-input  v-model="elements[activeIndex].props.domProps.innerHTML"></el-input>
           </div>
           <div class="form-group" v-if="activeType === 'text'">
             <label>字体大小</label>
-            <input type="range" min="12" max="240" :value="fontSize" data-style="fontSize" @input="styleChange($event.target)" class="form-control">
+            <el-input-number  v-model="elements[activeIndex].props.style.fontSize" :min="12" :max="240"></el-input-number>
           </div>
           <div class="form-group" v-if="activeType === 'text'">
             <label>颜色</label>
-            <input type="color" :value="color" data-style="color" @input="styleChange($event.target)" class="form-control">
+            <el-color-picker v-model="elements[activeIndex].props.style.color"></el-color-picker>
           </div>
           <div class="form-group" v-if="activeType === 'img'">
             <label>宽度</label>
-            <input type="text" min="50" max="1920" :value="width" data-style="width" @input="styleChange($event.target)" class="form-control">
+            <el-slider v-model="elements[activeIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
           </div>
           <div class="form-group" v-if="activeType === 'img'">
             <label>高度</label>
-            <input type="text" min="50" max="1080" :value="height" data-style="height" @input="styleChange($event.target)" class="form-control" />
+            <el-slider v-model="elements[activeIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
           </div>
           <div class="form-group">
             <label>left</label>
-            <input type="range" min="0" max="1920" :value="left" data-style="left" @input="styleChange($event.target)" class="form-control" />
+            <el-slider v-model="elements[activeIndex].props.style.left" show-input :min="0" :max="1920"></el-slider>
           </div>
           <div class="form-group">
             <label>top</label>
-            <input type="range" min="0" max="1080" :value="top" data-style="top" @input="styleChange($event.target)" class="form-control" />
+            <el-slider v-model="elements[activeIndex].props.style.top" show-input :min="0" :max="1080"></el-slider>
           </div>
 
           <div class="form-group">
             <label>旋转</label>
-            <input type="range" min="0" max="360" :value="rotate" data-style="rotate" @input="styleChange($event.target)" class="form-control" />
+            <el-slider v-model="elements[activeIndex].props.style.rotate" show-input :min="0" :max="360" @change="onChange"></el-slider>
           </div>
-          <div class="form-gourp" v-if="activeType === 'img'">
+          <div class="form-group" v-if="activeType === 'img'">
             <upload :imageUrl="src" @urlChange="handleUrlChange"></upload>
           </div>
-          <div class="btn btn-default" @click="isRun = !isRun"> {{isRun ? '停止动画':'启动动画'}}</div>
+          <div class="form-group">
+            <el-switch v-model="isRun" on-text="on" off-text="off">
+            </el-switch>
+          </div>
 
         </form>
       </div>
@@ -95,6 +98,7 @@ export default {
   },
   methods: {
     styleChange(dom) {
+
       let key = dom.getAttribute('data-style')
       let valueMustBeNumber = numberKyes.includes(key)
       let value = valueMustBeNumber ? Number(dom.value) : dom.value
@@ -110,6 +114,9 @@ export default {
     },
     handleUrlChange(url) {
       this.$set(this.elements[this.activeIndex].props.domProps, 'src', url)
+    },
+    onChange(){
+      console.log(arguments)
     }
   },
   mounted() {
