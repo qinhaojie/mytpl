@@ -402,6 +402,7 @@ export default [
             top: 900,
             left: 1700,
             rotate: 0,
+            animationDuration: 1,
             animationName: ''
           },
           domProps: {
@@ -420,6 +421,197 @@ export default [
           },
           domProps: {
             src: '/static/tplImg/02/1.jpg'
+          },
+          'class': ['tpl-bg']
+        }
+      },
+    ]
+  },
+  {
+    name: 'tpl3',
+    preview: '/static/tplImg/03/preview.jpg',
+    data: [
+      {
+        type: 'img',
+        id: 1,
+        role: 'component',
+        props: {
+          style: {
+            top: 10,
+            left: 10,
+            width: 328,
+            height: 114,
+            rotate: 0,
+            animationDuration: 1,
+            animationName: 'zoomOutUp',
+            zIndex: 10
+          },
+          domProps: {
+            src: '/static/tplImg/03/logo.png',
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'img',
+        id: 2,
+        role: 'component',
+        props: {
+          style: {
+            top: 2,
+            left: 798,
+            width: 1104,
+            height: 847,
+            rotate: 0,
+            animationName: '',
+            animationDuration: 1
+          },
+          domProps: {
+            src: '/static/tplImg/03/1.png',
+          },
+          'class': ['']
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+          style: {
+            fontFamily: '\"Microsoft Yahei\"',
+            rotate: 0,
+            color: '#000',
+            fontSize: 160,
+            top: 219,
+            left: 93,
+            animationDuration: 1,
+            animationName: ''
+          },
+          domProps: {
+            innerHTML: '特色菜名'
+
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+          style: {
+            fontFamily: '\"Microsoft Yahei\"',
+            rotate: 0,
+            color: '#000',
+            fontSize: 38,
+            top: 485,
+            left: 93,
+            animationDuration: 1,
+            animationName: ''
+          },
+          domProps: {
+            innerHTML: '好吃/爽口／挑战你的味觉'
+
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+          style: {
+            fontFamily: 'STFangsong',
+            rotate: 0,
+            color: '#000',
+            fontSize: 28,
+            top: 618,
+            left: 93,
+            animationDuration: 1,
+            animationName: ''
+          },
+          domProps: {
+            innerHTML: '店名：某某某某某某'
+
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+          style: {
+            fontFamily: 'STFangsong',
+            rotate: 0,
+            color: '#000',
+            fontSize: 28,
+            top: 674,
+            left: 93,
+            animationDuration: 1,
+            animationName: ''
+          },
+          domProps: {
+            innerHTML: '电话：028-88888888'
+
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+          style: {
+            fontFamily: 'STFangsong',
+            rotate: 0,
+            color: '#000',
+            fontSize: 28,
+            top: 782,
+            left: 93,
+            animationDuration: 1,
+            animationName: ''
+          },
+          domProps: {
+            innerHTML: '地址：成都市环球中心e2-806'
+
+          },
+          'class': ['infinite', 'animated']
+        }
+      },
+      {
+        type: 'img',
+        id: 13,
+        role: 'code',
+        props: {
+          style: {
+            width: 132,
+            height: 187,
+            top: 855,
+            left: 93,
+            animationDuration: 1,
+            rotate: 0,
+            animationName: ''
+          },
+          domProps: {
+            src: '/static/tplImg/03/code.png'
+          },
+          'class': []
+        }
+      },
+      {
+        type: 'img',
+        id: 13,
+        role: 'background',
+        props: {
+          style: {
+            animationDuration: 1,
+          },
+          domProps: {
+            src: '/static/tplImg/03/1.jpg'
           },
           'class': ['tpl-bg']
         }

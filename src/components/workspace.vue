@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2" >
-        <img :src="item.preview" class="img-responsive" v-for="(item,index) in tplList" :key="item.name" @click="setActiveTplIndex(index)"/>
+      <div class="col-md-2">
+        <img :src="item.preview" class="img-responsive" v-for="(item,index) in tplList" :key="item.name" @click="setActiveTplIndex(index)" />
       </div>
       <div class="col-md-7 ov-h">
         <my-canvas :data="tplList[activeTplIndex].data" :class="{stop: !isRun}" @activeElementChange="setActiveIndex">sdfg</my-canvas>
@@ -23,18 +23,20 @@
           <el-form-item label="颜色" v-if="activeType === 'text'">
             <el-color-picker v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.color"></el-color-picker>
           </el-form-item>
-          <el-form-item label="宽度" v-if="activeType === 'img'">
-            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
-          </el-form-item>
-          <el-form-item label="高度" v-if="activeType === 'img'">
-            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
-          </el-form-item>
-          <el-form-item label="left">
-            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.left" show-input :min="-300" :max="1920"></el-slider>
-          </el-form-item>
-          <el-form-item label="top">
-            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.top" show-input :min="-300" :max="1080"></el-slider>
-          </el-form-item>
+          <div v-if="role !== 'background'">
+            <el-form-item label="宽度" v-if="activeType === 'img'">
+              <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
+            </el-form-item>
+            <el-form-item label="高度" v-if="activeType === 'img'">
+              <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
+            </el-form-item>
+            <el-form-item label="left">
+              <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.left" show-input :min="-300" :max="1920"></el-slider>
+            </el-form-item>
+            <el-form-item label="top">
+              <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.top" show-input :min="-300" :max="1080"></el-slider>
+            </el-form-item>
+          </div>
           <el-form-item label="旋转">
             <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.rotate" show-input :min="0" :max="360"></el-slider>
           </el-form-item>
@@ -93,6 +95,9 @@ export default {
       var domProps = this.tplList[this.activeTplIndex].data[this.activeElementIndex].props.domProps
 
       return domProps ? domProps.src : ''
+    },
+    role() {
+      return this.tplList[this.activeTplIndex].data[this.activeElementIndex].role
     }
   },
   data() {

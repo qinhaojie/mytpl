@@ -30,8 +30,9 @@
     },
     methods: {
       handleAvatarSuccess(res, file) {
-        console.log(res)
-        this.$emit('urlChange', `/api/v1/common/file/redirectUrl?fileId=${res.data.id}`)
+        console.log(res);
+        // this.$emit('urlChange', `/api/v1/common/file/redirectUrl?fileId=${res.data.id}`)
+        this.$emit('urlChange', URL.createObjectURL(file.raw))
         //this.imageUrl = URL.createObjectURL(file.raw);
       },
       beforeAvatarUpload(file) {
