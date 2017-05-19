@@ -1,49 +1,52 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8 ov-h">
-        <my-canvas :data="elements" :class="{stop: !isRun}" @activeElementChange="setActiveIndex">sdfg</my-canvas>
+      <div class="col-md-2" >
+        <img :src="item.preview" class="img-responsive" v-for="(item,index) in tplList" :key="item.name" @click="setActiveTplIndex(index)"/>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-7 ov-h">
+        <my-canvas :data="tplList[activeTplIndex].data" :class="{stop: !isRun}" @activeElementChange="setActiveIndex">sdfg</my-canvas>
+      </div>
+      <div class="col-md-3">
         <el-form label-width="80px">
-          <el-form-item label="文本"  v-if="activeType === 'text'">
-            <el-input  v-model="elements[activeIndex].props.domProps.innerHTML"></el-input>
+          <el-form-item label="文本" v-if="activeType === 'text'">
+            <el-input v-model="tplList[activeTplIndex].data[activeElementIndex].props.domProps.innerHTML"></el-input>
           </el-form-item>
           <el-form-item label="文本大小" v-if="activeType === 'text'">
-            <el-input-number  v-model="elements[activeIndex].props.style.fontSize" :min="12" :max="240"></el-input-number>
-          </el-form-item >
+            <el-input-number v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.fontSize" :min="12" :max="240"></el-input-number>
+          </el-form-item>
           <el-form-item label="字体" v-if="activeType === 'text'">
-            <el-select v-model="elements[activeIndex].props.style.fontFamily">
+            <el-select v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.fontFamily">
               <el-option v-for="option in fontFamily" :key="option.key" :value="option.key" :style="{fontFamily: option.key}" :label="option.value"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="颜色" v-if="activeType === 'text'">
-            <el-color-picker v-model="elements[activeIndex].props.style.color"></el-color-picker>
+            <el-color-picker v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.color"></el-color-picker>
           </el-form-item>
           <el-form-item label="宽度" v-if="activeType === 'img'">
-            <el-slider v-model="elements[activeIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.width" show-input :min="50" :max="1920"></el-slider>
           </el-form-item>
           <el-form-item label="高度" v-if="activeType === 'img'">
-            <el-slider v-model="elements[activeIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.height" show-input :min="50" :max="1080"></el-slider>
           </el-form-item>
           <el-form-item label="left">
-            <el-slider v-model="elements[activeIndex].props.style.left" show-input :min="-300" :max="1920"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.left" show-input :min="-300" :max="1920"></el-slider>
           </el-form-item>
           <el-form-item label="top">
-            <el-slider v-model="elements[activeIndex].props.style.top" show-input :min="-300" :max="1080"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.top" show-input :min="-300" :max="1080"></el-slider>
           </el-form-item>
           <el-form-item label="旋转">
-            <el-slider v-model="elements[activeIndex].props.style.rotate" show-input :min="0" :max="360"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.rotate" show-input :min="0" :max="360"></el-slider>
           </el-form-item>
           <el-form-item label="动画种类">
-            <el-select v-model="elements[activeIndex].props.style.animationName">
+            <el-select v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.animationName">
               <el-option v-for="name in animateNames" :key="name" :value="name" :label="name"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="动画时间">
-            <el-slider v-model="elements[activeIndex].props.style.animationDuration" :step="0.1" show-input :min="0" :max="15"></el-slider>
+            <el-slider v-model="tplList[activeTplIndex].data[activeElementIndex].props.style.animationDuration" :step="0.1" show-input :min="0" :max="15"></el-slider>
           </el-form-item>
-          <el-form-item  v-if="activeType === 'img'" label="替换图片">
+          <el-form-item v-if="activeType === 'img'" label="替换图片">
             <upload :imageUrl="src" @urlChange="handleUrlChange"></upload>
           </el-form-item>
           <el-form-item label="开启动画">
@@ -62,7 +65,7 @@ import canvas from './Canvas'
 import eventbus from '../common/eventbus'
 import upload from './upload'
 import fontFamily from '../config/fontFamily.config'
-import data from '../mock/data'
+import tplList from '../config/tplList.config'
 import animateNames from '../config/animate.config'
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
 function generateComputedStyleProps() {
@@ -82,57 +85,42 @@ export default {
     "my-canvas": canvas,
     upload
   },
-  computed: Object.assign({
-    innerHTML() {
-      return this.elements[this.activeIndex].props.domProps.innerHTML
+  computed: {
+    activeType() {
+      return this.tplList[this.activeTplIndex].data[this.activeElementIndex].type
     },
     src() {
-      return this.elements[this.activeIndex].props.domProps.src
-    },
-    activeType() {
-      return this.elements[this.activeIndex].type
+      var domProps = this.tplList[this.activeTplIndex].data[this.activeElementIndex].props.domProps
+
+      return domProps ? domProps.src : ''
     }
-  }, generateComputedStyleProps()),
+  },
   data() {
 
     return {
       animateNames,
       fontFamily,
-      activeIndex: 0,
+      activeElementIndex: 0,
+      activeTplIndex: 0,
       isRun: false,
-      elements: data
+      tplList
     }
   },
   methods: {
-    styleChange(dom) {
-
-      let key = dom.getAttribute('data-style')
-      let valueMustBeNumber = numberKyes.includes(key)
-      let value = valueMustBeNumber ? Number(dom.value) : dom.value
-      this.$set(this.elements[this.activeIndex].props.style, key, value)
-    },
-    domPropsChange(dom) {
-      let value = dom.value
-      let key = dom.getAttribute('data-style')
-      this.$set(this.elements[this.activeIndex].props.domProps, key, value)
+    setActiveTplIndex(i) {
+      this.activeElementIndex = 0
+      this.activeTplIndex = i
     },
     setActiveIndex(i) {
-      this.activeIndex = i
+      this.activeElementIndex = i
     },
     handleUrlChange(url) {
-      this.$set(this.elements[this.activeIndex].props.domProps, 'src', url)
-    },
-    onChange(){
-      console.log(arguments)
+      this.$set(this.tplList[this.activeTplIndex].data[this.activeElementIndex].props.domProps, 'src', url)
     }
   },
   mounted() {
     eventbus.$on('elementChange', (index, newEl) => {
-      // this.elements[index] = newEl
-      this.$set(this.elements, index, newEl)
-      // this.elements[index].props.style.top = newEl.props.style.top
-      // this.elements[index].props.style.left = newEl.props.style.left
-      // console.log(newEl,this.elements[index])
+      this.$set(this.tplList[this.activeTplIndex].data, index, newEl)
     })
   }
 }

@@ -32,13 +32,13 @@ export default
           width: 775,
           height: 1080,
           rotate: 0,
-          animationName: 'wobble',
+          animationName: '',
           animationDuration: 1
         },
         domProps: {
           src: '/static/tplImg/01/1.png',
         },
-        'class': ['infinite', 'animated']
+        'class': ['']
       }
     },
     {
@@ -175,58 +175,15 @@ export default
     {
       type: 'img',
       id: 13,
-      role: 'component',
+      role: 'background',
       props: {
         style: {
-          width: 712,
-          height: 747,
-          top: 165,
-          left: 1170,
-          rotate: 0,
-          animationName:''
+
         },
         domProps: {
-          src: '/static/tplImg/01/2.png'
+          src: '/static/tplImg/02/1.jpg'
         },
-        'class': []
+        'class': ['tpl-bg']
       }
     },
-    {
-      type: 'img',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          width: 166,
-          height: 249,
-          top: 222,
-          left: 938,
-          rotate: 0,
-          animationName:''
-        },
-        domProps: {
-          src: '/static/tplImg/01/3.png'
-        },
-        'class': []
-      }
-    },
-    {
-      type: 'img',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          width: 253,
-          height: 253,
-          top: 600,
-          left: 838,
-          rotate: 0,
-          animationName:''
-        },
-        domProps: {
-          src: '/static/tplImg/01/4.png'
-        },
-        'class': []
-      }
-    }
   ]
