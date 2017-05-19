@@ -6,11 +6,11 @@ import ElementUI from 'element-ui'
 import Workspace from './components/workspace.vue'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.component('Workspace',Workspace)
 // document.body.addEventListener('dragstart', () => {return false})
 window.Vue = Vue
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<Workspace/>',
-  components: { Workspace }
 })

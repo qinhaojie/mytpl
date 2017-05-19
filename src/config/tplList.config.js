@@ -1,5 +1,5 @@
-export default
-  [
+export default {
+  tpl1: [
     {
       type: 'img',
       id: 1,
@@ -230,3 +230,4 @@ export default
       }
     }
   ]
+}

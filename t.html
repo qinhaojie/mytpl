@@ -39,7 +39,8 @@
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
       filter: alpha(opacity=20);
     }
-    .zoom{
+
+    .zoom {
       transform: scale(1.5);
     }
   </style>
@@ -48,13 +49,87 @@
 <body>
   <div class="d origin"></div>
   <div class="d zoom"></div>
+  <div class="goog-menu goog-menu-vertical docs-fontmenu" role="menu" aria-haspopup="true" style="user-select: none; visibility: visible; left: 349px; top: 91px; display: none;">
 
+    <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oe" style="user-select: none;">
+      <div class="goog-menuitem-content">
+        <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Comic Sans MS&quot;;">Comic Sans MS</span></div>
+    </div>
+    <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":of" style="user-select: none;">
+      <div class="goog-menuitem-content">
+        <div class="goog-menuitem-checkbox"></div><span style="font-family: Georgia;">Georgia</span></div>
+    </div>
+    <div class="goog-menuseparator" aria-disabled="true" role="separator" id=":og" style="user-select: none;"></div>
+    <div class="docs-fontmenu-fonts">
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oh" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Arial;">Arial</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oi" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Comic Sans MS&quot;;">Comic Sans MS</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oj" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Courier New&quot;;">Courier New</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":ok" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Georgia;">Georgia</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":ol" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Impact;">Impact</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":om" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Times New Roman&quot;;">Times New Roman</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":on" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Trebuchet MS&quot;;">Trebuchet MS</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oo" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Verdana;">Verdana</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":op" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: STFangsong;">华文仿宋</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":oq" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: STsong;">华文宋体</span></div>
+      </div>
+      <div class="goog-menuitem goog-option goog-option-selected" role="menuitemcheckbox" aria-checked="true" id=":or" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: STKaiti;">华文楷体</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":os" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: &quot;Microsoft Yahei&quot;;">微软雅黑</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":ot" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Kai;">楷体</span></div>
+      </div>
+      <div class="goog-menuitem goog-option" role="menuitemcheckbox" aria-checked="false" id=":ou" style="user-select: none;">
+        <div class="goog-menuitem-content">
+          <div class="goog-menuitem-checkbox"></div><span style="font-family: Hei;">黑体</span></div>
+      </div>
+    </div>
+  </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script>
-    var a = document.querySelector('.origin')
-    var b = document.querySelector('.zoom')
-    console.log(a.clientWidth)
-    console.log(b.clientWidth)
+    var json = []
+    $('.goog-option span').each((i,e)=>{
+      json.push({
+        key: $(e).css('fontFamily'),
+        value: $(e).text()
+      })
+    })
+    console.log(JSON.stringify(json))
   </script>
 </body>
 

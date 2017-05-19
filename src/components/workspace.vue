@@ -9,8 +9,13 @@
           <el-form-item label="文本"  v-if="activeType === 'text'">
             <el-input  v-model="elements[activeIndex].props.domProps.innerHTML"></el-input>
           </el-form-item>
-          <el-form-item label="字体大小" v-if="activeType === 'text'">
+          <el-form-item label="文本大小" v-if="activeType === 'text'">
             <el-input-number  v-model="elements[activeIndex].props.style.fontSize" :min="12" :max="240"></el-input-number>
+          </el-form-item >
+          <el-form-item label="字体" v-if="activeType === 'text'">
+            <el-select v-model="elements[activeIndex].props.style.fontFamily">
+              <el-option v-for="option in fontFamily" :key="option.key" :value="option.key" :style="{fontFamily: option.key}" :label="option.value"></el-option>
+            </el-select>
           </el-form-item>
           <el-form-item label="颜色" v-if="activeType === 'text'">
             <el-color-picker v-model="elements[activeIndex].props.style.color"></el-color-picker>
@@ -35,10 +40,10 @@
               <el-option v-for="name in animateNames" :key="name" :value="name" :label="name"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="动画持续时间">
+          <el-form-item label="动画时间">
             <el-slider v-model="elements[activeIndex].props.style.animationDuration" :step="0.1" show-input :min="0" :max="15"></el-slider>
           </el-form-item>
-          <el-form-item  v-if="activeType === 'img'">
+          <el-form-item  v-if="activeType === 'img'" label="替换图片">
             <upload :imageUrl="src" @urlChange="handleUrlChange"></upload>
           </el-form-item>
           <el-form-item label="开启动画">
@@ -56,6 +61,7 @@
 import canvas from './Canvas'
 import eventbus from '../common/eventbus'
 import upload from './upload'
+import fontFamily from '../config/fontFamily.config'
 import data from '../mock/data'
 import animateNames from '../config/animate.config'
 const numberKyes = ['top', 'left', 'width', 'height', 'rotate', 'fontSize']
@@ -91,6 +97,7 @@ export default {
 
     return {
       animateNames,
+      fontFamily,
       activeIndex: 0,
       isRun: false,
       elements: data
