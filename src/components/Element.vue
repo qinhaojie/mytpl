@@ -10,21 +10,21 @@ const type2NameMap = {
 
 export default {
   name: 'element',
-  props:['el'],
+  props: ['el'],
   computed: {
     format() {
       let ret = _.cloneDeep(this.el)
-      for (let key in ret.props.style){
+      for (let key in ret.props.style) {
         let value = ret.props.style[key]
-        if(key === 'rotate'){
+        if (key === 'rotate') {
           ret.props.style['transform'] = `rotate(${value}deg)`
           continue
         }
-        if(key === 'animationDuration'){
+        if (key === 'animationDuration') {
           ret.props.style['animationDuration'] = `${value}s`
           continue
         }
-        if(typeof value === 'number') {
+        if (typeof value === 'number') {
           ret.props.style[key] = value + 'px'
         }
       }
@@ -32,6 +32,7 @@ export default {
       ret.props.attrs = {
         'draggable': false
       }
+      ret.props.class = ['touch']
       return ret
     }
   },
@@ -40,6 +41,12 @@ export default {
       type2NameMap[this.el.type],
       Object.assign({}, this.format.props)
     )
+  },
+  mounted() {
+    var hammertime = new Hammer(this.$el);
+    hammertime.on('pan', function (ev) {
+      console.log(ev.deltaX,ev.deltaY);
+    })
   }
 }
 </script>

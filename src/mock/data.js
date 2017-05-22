@@ -1,189 +1,37 @@
-export default
-  [
-    {
-      type: 'img',
-      id: 1,
-      role: 'component',
-      props: {
-        style: {
-          top: 10,
-          left: 10,
-          width: 328,
-          height: 114,
-          rotate: 0,
-          animationDuration: 1,
-          animationName:'zoomOutUp',
-          zIndex:10
-        },
-        domProps: {
-          src: '/static/tplImg/01/logo.png',
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'img',
-      id: 2,
-      role: 'component',
-      props: {
-        style: {
-          top: 0,
-          left: 0,
-          width: 775,
-          height: 1080,
-          rotate: 0,
-          animationName: '',
-          animationDuration: 1
-        },
-        domProps: {
-          src: '/static/tplImg/01/1.png',
-        },
-        'class': ['']
-      }
-    },
-    {
-      type: 'text',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          fontFamily: 'STFangsong',
-          rotate: 0,
-          color: '#000',
-          fontSize: 50,
-          top: 370,
-          left: 343,
-          animationDuration: 1,
-          animationName: ''
-        },
-        domProps: {
-          innerHTML: '成都必吃'
-
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'text',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          fontFamily: 'hei',
-          rotate: 0,
-          color: '#000',
-          fontSize: 110,
-          top: 442,
-          left: 237,
-          animationDuration: 1,
-          animationName: ''
-        },
-        domProps: {
-          innerHTML: '潮流火锅'
-
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'text',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          fontFamily: 'STFangsong',
-          rotate: 0,
-          color: '#000',
-          fontSize: 38,
-          top: 620,
-          left: 271,
-          animationDuration: 1,
-          animationName: ''
-        },
-        domProps: {
-          innerHTML: '夏季特推：爽口冰粉儿'
-
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'text',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          fontFamily: 'hei',
-          rotate: 0,
-          padding: '0.3em 1.5em',
-          background: '#000',
-          color: '#fff',
-          fontSize: 32,
-          top: 688,
-          left: 260,
-          animationDuration: 1,
-          animationName: ''
-        },
-        domProps: {
-          innerHTML: '电话：028-88888888'
-
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'text',
-      id: 13,
-      role: 'component',
-      props: {
-        style: {
-          fontFamily: 'STFangsong',
-          rotate: 0,
-          color: '#000',
-          fontSize: 30,
-          top: 785,
-          left: 257,
-          animationDuration: 1,
-          animationName: ''
-        },
-        domProps: {
-          innerHTML: '地址：成都市环球中心e2-806'
-
-        },
-        'class': ['infinite', 'animated']
-      }
-    },
-    {
-      type: 'img',
-      id: 13,
-      role: 'code',
-      props: {
-        style: {
-          width: 205,
-          height: 132,
-          top: 900,
-          left: 1700,
-          rotate: 0,
-          animationName:''
-        },
-        domProps: {
-          src: '/static/tplImg/01/code.png'
-        },
-        'class': []
-      }
-    },
-    {
-      type: 'img',
-      id: 13,
-      role: 'background',
-      props: {
-        style: {
-
-        },
-        domProps: {
-          src: '/static/tplImg/02/1.jpg'
-        },
-        'class': ['tpl-bg']
-      }
-    },
-  ]
+var a =
+  {
+    // 模板名
+    name: 'tpl1',
+    // 预览图地址
+    preview: '/static/tplImg/01/preview.jpg',
+    // 模板内元素信息
+    data: [
+      {
+        // 元素类型，目前暂定：图片img、文本text两种
+        type: 'img',
+        id: 1,
+        // 元素作用，目前暂定： 普通组件component、背景元素background、二维码code三种
+        role: 'component',
+        // 元素的各种样式属性,用于最终渲染
+        props: {
+            top: 10,
+            left: 10,
+            width: 328,
+            height: 114,
+            src: '/static/tplImg/01/logo.png',
+        }
+      },
+      {
+        type: 'text',
+        id: 13,
+        role: 'component',
+        props: {
+            fontFamily: 'STFangsong',
+            color: '#000',
+            fontSize: 50,
+            top: 370,
+            left: 343,
+        }
+      },
+    ]
+  }

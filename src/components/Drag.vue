@@ -10,9 +10,9 @@ export default {
   props: ['index'],
   mounted() {
     let el = this._el = this.$slots.default[0].elm
-    new Draggable (el, {
-      onDragEnd: this.onDragEnd.bind(this)
-    });
+    // new Draggable (el, {
+    //   onDragEnd: this.onDragEnd.bind(this)
+    // });
   },
   methods: {
 
